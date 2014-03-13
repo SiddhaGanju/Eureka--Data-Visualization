@@ -1,0 +1,16 @@
+function drawVisualization() {
+  var data = google.visualization.arrayToDataTable([
+    ['Country', 'Popularity'],
+    ['France', 500],
+    ['RU', 700],
+    ['AUS', 300],
+    ['USA', 800],
+    ['India', 300],
+    ['Germany', 100]
+    
+  ]);
+
+  var geochart = new google.visualization.GeoChart(
+      document.getElementById('visualization'));
+  geochart.draw(data, {width: 556, height: 347});
+}
