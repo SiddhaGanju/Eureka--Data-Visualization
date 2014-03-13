@@ -1,0 +1,43 @@
+function drawVisualization() {
+  // Prepare the data
+  var data = google.visualization.arrayToDataTable([
+    ['Name', 'Age Group'],
+    ['0-20' , 5],
+    ['21-40', 7],
+    ['41-60', 3],
+    ['61-80', 2],
+    ['Above 80', 6]
+    
+  ]);
+
+  // Define a slider control for the 'Donuts eaten' column
+  var slider = new google.visualization.ControlWrapper({
+    'controlType': 'NumberRangeFilter',
+    'containerId': 'control1',
+    'options': {
+      'filterColumnLabel': 'Age Group',
+      'ui': {'labelStacking': 'vertical'}
+    }
+  });
+
+  // Define a pie chart
+  var piechart = new google.visualization.ChartWrapper({
+    'chartType': 'PieChart',
+    'containerId': 'chart1',
+    'options': {
+      'width': 600,
+      'height': 300,
+      'legend': 'bottom',
+      'chartArea': {'left': 15, 'top': 15, 'right': 0, 'bottom': 0},
+      'pieSliceText': 'value'
+    }
+  });
+
+  // Create the dashboard.
+  new google.visualization.Dashboard(document.getElementById('dashboard')).
+    // Configure the slider to affect the piechart
+    bind(slider, piechart).
+    // Draw the dashboard
+    draw(data);
+}
+​
