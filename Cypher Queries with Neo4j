@@ -1,0 +1,26 @@
+MATCH (a) --> (b) 
+RETURN a,b;
+
+//gives two nodes with a being the first and b being the second. 
+//used to find patients with specific name goes to a specific doctor
+//find patient named "Ann" whose doctor is "Phillip"
+//a = Ann, b = Phillip
+
+MATCH (n)
+RETURN n;
+
+//Returns all nodes in the graph
+//used to find all the patients for a doctor
+
+MATCH (a) - [:patient_of] -> (d)
+RETURN a.name, d.title;
+
+//two nodes are related by "patient_of" relation
+//returns the name of the patient and the title of the doctor (eg: cardiologist, microbiologist, physician)
+
+MATCH (a)--> ()
+RETURN a;
+
+//returns node a, which has some relation to any doctor
+//node a will have at least one relation
+//Eg: any patient who has an insurance
